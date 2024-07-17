@@ -1,21 +1,15 @@
 name: app-check
-
 on: push
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           cache: npm
-      - name: Using
-        run: |
-          make setup
-          make start
-      - name: Run tests
-        run: make test
-      - name: Run linter
-        run: make lint
+      - run: make setup
+      - run: make test
+      - run: make lint
